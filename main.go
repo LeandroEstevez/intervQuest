@@ -133,3 +133,46 @@ func intersect(nums1 []int, nums2 []int) []int {
 
 	return comm
 }
+
+func plusOne(digits []int) []int {
+	if digits[(len(digits) - 1)] != 9 {
+		digits[(len(digits) - 1)] = digits[(len(digits) - 1)] + 1
+	} else {
+		for i := len(digits) - 1; i >= 0; i-- {
+			if i == 0 && digits[i] == 9 {
+				digits = append(digits, 0)
+				digits[i] = 1
+			} else {
+				if digits[i] != 9 {
+					digits[i] = digits[i] + 1
+					break
+				} else {
+					digits[i] = 0
+				}
+			}
+		}
+	}
+	return digits
+}
+
+func moveZeroes(nums []int)  {
+	var j int
+	var z int
+	if len(nums) != 1 {
+		for i := 0; i < len(nums); i++ {
+			j = i + 1
+			if i == len(nums) - 1 {
+				break
+			}
+			if nums[i] == 0 {
+				z = i
+				for nums[j] != 0 {
+					nums[z] = nums[j]
+					nums[j] = 0
+					z = j
+					j++
+				}
+			}
+		}
+	}
+}
