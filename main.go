@@ -176,3 +176,36 @@ func moveZeroes(nums []int)  {
 		}
 	}
 }
+
+func twoSum(nums []int, target int) []int {
+	numsMap := make(map[int][]int)
+
+	var result []int
+
+	for i, v := range nums {
+		_, ok := numsMap[v]
+		if !ok {
+			numsMap[v] = []int{i}
+		} else {
+			numsMap[v] = append(numsMap[v], i)
+		}
+	}
+
+	for i, v := range nums {
+		diff := target - v
+		j, ok := numsMap[diff]
+		if ok {
+			if i == j[0] {
+				if len(j) > 1 {
+					result = append(result, i, j[1])
+					break
+				}
+				continue
+			}
+			result = append(result, i, j[0])
+			break
+		}
+	}
+
+	return result
+}
