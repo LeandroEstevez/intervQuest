@@ -209,3 +209,28 @@ func twoSum(nums []int, target int) []int {
 
 	return result
 }
+
+func reverseString(s []byte)  {
+	i := 0
+	j := len(s) - 1
+	for i < j {
+		temp := s[j]
+		s[j] = s[i]
+		s[i] = temp
+		i++
+		j--
+	}
+}
+
+func firstUniqChar(s string) int {
+	sMap := make(map[rune][]int)
+	for i, v := range s {
+		sMap[v] = append(sMap[v], i)
+	}
+	for _, v := range s {
+		if len(sMap[v]) == 1 {
+			return sMap[v][0]
+		}
+	}
+	return -1
+}
