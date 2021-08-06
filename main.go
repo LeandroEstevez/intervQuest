@@ -1,9 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-
+	reverse(1)
 }
 
 func removeDuplicates(nums []int) int {
@@ -233,4 +235,31 @@ func firstUniqChar(s string) int {
 		}
 	}
 	return -1
+}
+
+func isAnagram(s string, t string) bool {
+	if len(s) != len(t) {
+		return false
+	}
+	sMap := make(map[rune]int)
+	for _, v := range s {
+		sMap[v] = sMap[v] + 1
+	}
+	fmt.Println(sMap)
+	tMap := make(map[rune]int)
+	for _, v := range t {
+		tMap[v] = tMap[v] + 1
+	}
+	fmt.Println(tMap)
+	count := 0
+	for k, v := range sMap {
+		n, ok := tMap[k]
+		if ok && v == n {
+			count = count + n
+		}
+	}
+	if count == len(s) {
+		return true
+	}
+	return false
 }
