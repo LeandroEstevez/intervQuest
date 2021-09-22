@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func main() {
@@ -262,4 +263,22 @@ func isAnagram(s string, t string) bool {
 		return true
 	}
 	return false
+}
+
+func reverse(x int) int {
+	  l := 0
+		var r string
+		if x < 0 {
+			l = 1
+			r = "-"
+		}
+    s := strconv.Itoa(x)
+		for i := len(s) - 1; i >= l; i-- {
+			r += string(s[i])
+		}
+		ri, _ := strconv.Atoi(r)
+		if ri < -2147483648 || ri > 2147483647 {
+			return 0
+		}
+		return ri
 }
